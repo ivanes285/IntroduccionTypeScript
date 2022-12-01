@@ -1,14 +1,15 @@
 import {Router} from 'express';
 import * as productsController from '../../controllers/v1/products-controller';
+import { checkAuth } from '../../Middlewares/auth-middleware';
 const router = Router();
 
 
-router.get('', productsController.getProducts);
-router.post('/create', productsController.createProduct);
-router.get('/:productId', productsController.getProductById);
-router.put('/:productId', productsController.updateProduct);
-router.patch('/:productId', productsController.partialUpdateProduct);
-router.delete('/:productId', productsController.deleteProductById);
-router.post('/:productId/notify-client', productsController.updateProductAndNotify);
+router.get('',checkAuth, productsController.getProducts);
+router.post('/create',checkAuth, productsController.createProduct);
+router.get('/:productId',checkAuth, productsController.getProductById);
+router.put('/:productId',checkAuth, productsController.updateProduct);
+router.patch('/:productId',checkAuth, productsController.partialUpdateProduct);
+router.delete('/:productId',checkAuth, productsController.deleteProductById);
+router.post('/:productId/notify-client',checkAuth, productsController.updateProductAndNotify);
 
 export default router;
