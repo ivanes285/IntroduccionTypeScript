@@ -8,8 +8,9 @@ const createProduct = async (req: Request, res: Response): Promise<void> => {
     if (!Types.ObjectId.isValid(id)) {
       throw { code: 400, message: 'ID de usuario inválido' };
     }
+    console.log(req.body)
     const { name, year, price, description } = req.body;
-    console.log('req.body', req.body);
+
     const product = new Product({ name, year, price, description, user: id });
     await product.save();
     res.status(200).send({ message: 'Producto creado exitosamente !!' });
