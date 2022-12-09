@@ -6,11 +6,13 @@ import apiV1 from './routes/v1';
 const app: Application = express();
 
 
+
 //Middlewares
 const optionsCors: cors.CorsOptions = {
-  origin: '*',
+  origin: ['*'],
   optionsSuccessStatus: 200
 };
+
 
 
 dotenv.config();
