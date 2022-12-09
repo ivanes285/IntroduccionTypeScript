@@ -66,7 +66,6 @@ if (prefix) {
 };
 
 
-
 export const validateNewProductBody = checkSchema(createProductSchema(true));
 
 
