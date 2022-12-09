@@ -116,10 +116,10 @@ const partialUpdateProduct = async (req: Request,res: Response): Promise<void> =
 const deleteProductById = async (req: Request,res: Response): Promise<void> => {
   try {
     const idProduct = req.params.productId;
-    const {id}=req.session;
     if (!Types.ObjectId.isValid(idProduct)) {
       throw { code: 400, message: 'ID inválido' };
     }
+    const {id}=req.session;
     const productExist = await Product.findOne({_id:idProduct,user:id});
     if (productExist) {
       const productDelete = await Product.findByIdAndDelete(idProduct);
